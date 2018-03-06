@@ -1,0 +1,34 @@
+h3{font-size: 0.8em;}
+h4{font-size: 0.7em;}
+header input{height: 46px; width: 450px;}
+footer input{height: 46px; width: 244px;}
+header{background: linear-gradient(#f0f0f0, white);}
+footer{margin-top: 100px;}
+
+#Experiencias {margin-top: 50px;}
+#Experiencias div  div img{width: 100%;height: 150px;}
+#Alojamientos div  div img{width: 100%;height: 150px;}
+#Alojamientos{margin-top: 100px;}
+#Destinos-destacados div  div img{width: 100%;height: 150px;}
+#Destinos-destacados{margin-top: 100px;}
+#Experiencias-en-Nueva-York div  div img{width: 100%;height: 150px;}
+#Experiencias-en-Nueva-York{margin-top: 100px;}
+#Descubre-Airbnb{margin-top: 30px;}
+
+.block{display: block;}
+.border-bottom{border-bottom: thin;}
+.img-Descubre-Airbnb{width: 100px;height: 70px;}
+.left{float: left;}
+.height-full{height: 100%;}
+.img-logo{width: 30px;height: 30px; margin: 25px 0px 25px 12px}
+.shadow{box-shadow: 2px 2px 3px grey;}
+.borde-thin{border:  grey;}
+.center{margin: auto; height: auto; width: auto;}
+.text-center{text-align: center; margin-top: 25px;}
+.padding-end-50{padding-bottom: 50px;}
+.margin-end-10{margin-bottom: 10px;}
+
+.height80{height: 80px;}
+
+.hover-botton-line:hover {border-bottom: groove cyan;}
+.border:hover {background-color: #99ffcc50;}
