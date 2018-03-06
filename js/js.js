@@ -1,116 +1,133 @@
 var robert = {
-
 	direcction:"N",
-	position:[0,0]
-
+	position:[1,1]
 }
-
-function turnRight(){
-	if(robert.direcction=="N"){robert.direcction="E"}
-	else if(robert.direcction=="E"){robert.direcction="S"}
-	else if(robert.direcction=="S"){robert.direcction="W"}
-	else if(robert.direcction=="W"){robert.direcction="N"}
-		console.log(robert.direcction);
-};
-
-function turnLeft(){
-	if(robert.direcction=="N"){robert.direcction="W"}
-	else if(robert.direcction=="E"){robert.direcction="N"}
-	else if(robert.direcction=="S"){robert.direcction="E"}
-	else if(robert.direcction=="W"){robert.direcction="S"}
-		console.log(robert.direcction);
-};
-function moveForward(){
-	if(robert.direcction=="N"){
-		if(robert.position[0]==0) {console.log("Robert is in the limit N")}
-		else{robert.position[0]-=1}}
-	if(robert.direcction=="W"){
-		if(robert.position[1]==0) {console.log("Robert is in the limit W")}
-		else {robert.position[1]-=1}}
-	if(robert.direcction=="S"){	
-		if(robert.position[0]>=9) {console.log("Robert is in the limit S")}
-		else {robert.position[0]+=1}}
-	if(robert.direcction=="E"){
-		if(robert.position[1]>=9) {console.log("Robert is in the limit E")}
-		else {robert.position[1]+=1}}
-		console.log(robert.position);
+var robert2 = {
+	direcction:"N",
+	position:[xMax-1,xMax-1]
 }
-function moveBack(){
-	if(robert.direcction=="N"){
-		if(robert.position[0]>=9) {console.log("Robert is in the limit")}
-		else{robert.position[0]+=1}}
-	if(robert.direcction=="W"){
-		if(robert.position[1]>=9) {console.log("Robert is in the limit")}
-		else {robert.position[1]+=1}}
-	if(robert.direcction=="S"){	
-		if(robert.position[0]==0) {console.log("Robert is in the limit")}
-		else {robert.position[0]-=1}}
-	if(robert.direcction=="E"){
-		if(robert.position[1]==0) {console.log("Robert is in the limit")}
-		else {robert.position[1]-=1}}
-		console.log(robert.position);
-}
-
-function robertDice2(order){
-
-			for(i=0;i<=order.length-1;i++){
-				if(order[i]=="f"){moveForward();}
-				else if(order[i]=="b"){moveBack();}
-				else if(order[i]=="l"){turnLeft();}
-				else if(order[i]=="r"){turnRight();}
-			}
-			position();
-			return matrix
-}
-		
-
-		function robertDice(order){
-			certain=true;
-			for(i=0;i<=order.length-1;i++){
-				if(order[i]=="f"){console.log("The order is valid");}
-				else if(order[i]=="b"){console.log("The order is valid")}
-				else if(order[i]=="l"){console.log("The order is valid")}
-				else if(order[i]=="r"){console.log("The order is valid")}
-				else{certain=false};
-			}
-		if(certain==true){robertDice2(order)}
-			else{console.log("The order is invalid");}
-		return matrix
-}
-		
-
-
-
-var matrix = [];
-for (x=0;x<=9;x++){
+var xMax=10;
+var matrix = []; //grill
+for (x=0;x<=xMax;x++){
 	matrix.push([]);
-		for (y=0;y<=9;y++){
+		for (y=0;y<=xMax;y++){
 			matrix[x].push(0);
 		}}
-// var matrix = [ [0,0,0,0,0,0,0,0,0,0],
-// 					[0,0,0,0,0,0,0,0,0,0],
-// 					[0,0,0,0,0,0,0,0,0,0],
-// 					[0,0,0,0,0,0,0,0,0,0],
-// 					[0,0,0,0,0,0,0,0,0,0],
-// 					[0,0,0,0,0,0,0,0,0,0],
-// 					[0,0,0,0,0,0,0,0,0,0],
-// 					[0,0,0,0,0,0,0,0,0,0],
-// 					[0,0,0,0,0,0,0,0,0,0],
-// 					[0,0,0,0,0,0,0,0,0,0],
-// 				];
+for(x=0;x<=xMax;x++){matrix[0][x]=2;}
+for(x=0;x<=xMax;x++){matrix[xMax][x]=2;}
+for(x=0;x<=xMax;x++){matrix[x][0]=2;}
+for(x=0;x<=xMax;x++){matrix[x][xMax]=2;}
 
-function position(){
-	matrix = [  [0,0,0,0,0,0,0,0,0,0],
-					[0,0,0,0,0,0,0,0,0,0],
-					[0,0,0,0,0,0,0,0,0,0],
-					[0,0,0,0,0,0,0,0,0,0],
-					[0,0,0,0,0,0,0,0,0,0],
-					[0,0,0,0,0,0,0,0,0,0],
-					[0,0,0,0,0,0,0,0,0,0],
-					[0,0,0,0,0,0,0,0,0,0],
-					[0,0,0,0,0,0,0,0,0,0],
-					[0,0,0,0,0,0,0,0,0,0],
-				];
+
+function turnRight(Robert){
+	if(Robert.direcction=="N"){Robert.direcction="E"}
+	else if(Robert.direcction=="E"){Robert.direcction="S"}
+	else if(Robert.direcction=="S"){Robert.direcction="W"}
+	else if(Robert.direcction=="W"){Robert.direcction="N"}
+		console.log(Robert.direcction);
+};
+
+function turnLeft(Robert){
+	if(Robert.direcction=="N"){Robert.direcction="W"}
+	else if(Robert.direcction=="E"){Robert.direcction="N"}
+	else if(Robert.direcction=="S"){Robert.direcction="E"}
+	else if(Robert.direcction=="W"){Robert.direcction="S"}
+		console.log(Robert.direcction);
+};
+function moveForward(Robert){
+	if(Robert.direcction=="N"){
+		if(check(Robert.position[0]-1,Robert.position[1])){
+			Robert.position[0]-=1}
+			else {console.log("There are some obstacle")}}
+
+	if(Robert.direcction=="W"){
+		if(check(Robert.position[0],Robert.position[1]-1)){
+			Robert.position[1]-=1}
+			else {console.log("There are some obstacle")}}
+
+	if(Robert.direcction=="S"){	
+		if(check(Robert.position[0]+1,Robert.position[1])){
+			Robert.position[0]+=1}
+			else {console.log("There are some obstacle")}}
+
+	if(Robert.direcction=="E"){
+		if(check(Robert.position[0],Robert.position[1]+1)){
+			Robert.position[1]+=1}
+			else {console.log("There are some obstacle")}}
+
+		console.log(Robert.position);
+}
+function moveBack(Robert){
+
+	if(Robert.direcction=="N"){
+		if(check(Robert.position[0]+1,Robert.position[1])){
+			Robert.position[0]+=1}
+			else {console.log("There are some obstacle")}}
+
+	if(Robert.direcction=="W"){
+		if(check(Robert.position[0],Robert.position[1]+1)){
+			Robert.position[1]+=1}
+			else {console.log("There are some obstacle")}}
+
+	if(Robert.direcction=="S"){	
+		 if(check(Robert.position[0]-1,Robert.position[1])){
+			Robert.position[0]-=1}
+			else {console.log("There are some obstacle")}}
+
+	if(Robert.direcction=="E"){
+		if(check(Robert.position[0],Robert.position[1]-1)){
+			Robert.position[1]-=1}
+			else {console.log("There are some obstacle")}}
+
+	console.log(Robert.position);
+}
+
+function robertDice(Robert,order){
+
+			if (checkOrder(order)){for(i=0;i<=order.length-1;i++){
+							if(order[i]=="f"){moveForward(Robert);}
+							else if(order[i]=="b"){moveBack(Robert);}
+							else if(order[i]=="l"){turnLeft(Robert);}
+							else if(order[i]=="r"){turnRight(Robert);}
+						}
+						position();
+						return matrix}
+			else {console.log("The order is invalid");}
+}
+		
+function checkOrder(order){
+	certain=true;
+	for(i=0;i<=order.length-1;i++){
+		if(order[i]=="f"){console.log("");}
+		else if(order[i]=="b"){console.log("")}
+		else if(order[i]=="l"){console.log("")}
+		else if(order[i]=="r"){console.log("")}
+		else{certain=false};
+	}
+	if(certain==true){return true}
+	else{return false}	
+}
+		
+	function check(x,y){
+		if (matrix[x][y]==0){return true}
+			else{return false}
+	
+}
+
+function position(Robert){
+	
+	for (x=1;x<=10;x++){
+			for (y=1;y<=10;y++){
+				matrix[x][y]=0;
+			}
+	}
 	matrix[robert.position[0]][robert.position[1]]=1;
+	matrix[robert2.position[0]][robert2.position[1]]=3;
 	return matrix
+}
+function obstacle(x,y){
+	matrix[x][y]=2;
+}
+function randonObstacle(){
+	matrix[parseInt((Math.random() * (xMax-2)) + 1)][parseInt((Math.random() * (xMax-2)) + 1)]=2;
 }
