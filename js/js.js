@@ -1,12 +1,4 @@
-var robert = {
-	direcction:"N",
-	position:[1,1]
-}
-var robert2 = {
-	direcction:"N",
-	position:[xMax-1,xMax-1]
-}
-var xMax=10;
+var xMax=7;
 var matrix = []; //grill
 for (x=0;x<=xMax;x++){
 	matrix.push([]);
@@ -17,6 +9,18 @@ for(x=0;x<=xMax;x++){matrix[0][x]=2;}
 for(x=0;x<=xMax;x++){matrix[xMax][x]=2;}
 for(x=0;x<=xMax;x++){matrix[x][0]=2;}
 for(x=0;x<=xMax;x++){matrix[x][xMax]=2;}
+
+
+
+var robert = {
+	direcction:"N",
+	position:[1,1]
+}
+
+var robert2 = {
+	direcction:"N",
+	position:[xMax-1,xMax-1]
+}
 
 
 function turnRight(Robert){
@@ -85,12 +89,12 @@ function moveBack(Robert){
 function robertDice(Robert,order){
 
 			if (checkOrder(order)){for(i=0;i<=order.length-1;i++){
-							if(order[i]=="f"){moveForward(Robert);}
-							else if(order[i]=="b"){moveBack(Robert);}
+							if(order[i]=="f"){matrix[Robert.position[0]][Robert.position[1]]=0;moveForward(Robert);matrix[Robert.position[0]][Robert.position[1]]=1;}
+							else if(order[i]=="b"){matrix[Robert.position[0]][Robert.position[1]]=0;moveBack(Robert);matrix[Robert.position[0]][Robert.position[1]]=1;}
 							else if(order[i]=="l"){turnLeft(Robert);}
 							else if(order[i]=="r"){turnRight(Robert);}
 						}
-						position();
+						//position();
 						return matrix}
 			else {console.log("The order is invalid");}
 }
@@ -116,8 +120,8 @@ function checkOrder(order){
 
 function position(Robert){
 	
-	for (x=1;x<=10;x++){
-			for (y=1;y<=10;y++){
+	for (x=1;x<=xMax-1;x++){
+			for (y=1;y<=xMax-1;y++){
 				matrix[x][y]=0;
 			}
 	}
@@ -128,6 +132,16 @@ function position(Robert){
 function obstacle(x,y){
 	matrix[x][y]=2;
 }
-function randonObstacle(){
-	matrix[parseInt((Math.random() * (xMax-2)) + 1)][parseInt((Math.random() * (xMax-2)) + 1)]=2;
+function randonObstacle(number){
+	for (x=0;x<=number;x++){
+			certain = false;
+			while(certain==false){
+			x = parseInt((Math.random() * (xMax-2)) + 1);
+			y = parseInt((Math.random() * (xMax-2)) + 1);
+			if(matrix[x][y]==0){certain = true}
+			
+			}
+			matrix[x][y]=2;
+		}
+		console.log(matrix);
 }
